@@ -84,7 +84,9 @@ Route::get("appusers/freelancer/{f_id}/client/{c_id}/project", "ProjectControlle
 // Route::put("userspecializations/{id}", "AppUserUserSpecializationController@updateItem");
 // Route::get("userspecializations/", "AppUserUserSpecializationController@showAllItems");
 // New Routes below
+//Test
+Route::get('test', function () {
+    $test = array("name" => "Anthony", "age" => "12");
 
-
-
-
+    return $test;
+});

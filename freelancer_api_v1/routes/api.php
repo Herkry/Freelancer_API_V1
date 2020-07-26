@@ -81,7 +81,9 @@ Route::get("appusers/", "AppUserController@showAllItems");
 // Route::get("userspecializations/", "AppUserUserSpecializationController@showAllItems");
 
 // New Routes below
+//Test
+Route::get('test', function () {
+    $test = array("name" => "Anthony", "age" => "12");
 
-
-
-
+    return $test;
+});

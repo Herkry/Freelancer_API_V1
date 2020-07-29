@@ -90,3 +90,12 @@ Route::get('test', function () {
 
     return $test;
 });
+/**
+ * Gets the general categories
+ * *http://localhost:8000/api/
+ */
+Route::get('categories', function ($id) {
+    //An array of categories object
+    //Retrieve an objects of array
+
+});

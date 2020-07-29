@@ -14,10 +14,10 @@ class CreateSpecializationsTable extends Migration
     public function up()
     {
         Schema::create('specializations', function (Blueprint $table) {
-            $table->increments("specialization_id");
+            $table->bigIncrements("specialization_id");
             $table->string("specialization_description");
-            
-            $table->integer("skill_id")->unsigned();
+
+            $table->unsignedBigInteger("skill_id");
             $table->foreign("skill_id")->references("skill_id")->on("skills");
         });
     }

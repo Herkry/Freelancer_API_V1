@@ -14,10 +14,10 @@ class CreateOccupationsTable extends Migration
     public function up()
     {
         Schema::create('occupations', function (Blueprint $table) {
-            $table->increments("occupation_id");
+            $table->bigIncrements("occupation_id");
             $table->string("occupation_description");
-            
-            $table->integer("appuser_id")->unsigned();
+
+            $table->unsignedBigInteger("appuser_id");
             $table->foreign("appuser_id")->references("appuser_id")->on("app_users");
         });
     }

@@ -15,7 +15,7 @@ class CreateAppUsersTable extends Migration
     {
         Schema::create('app_users', function (Blueprint $table) {
 
-            $table->increments("appuser_id");
+            $table->bigIncrements("appuser_id");
             $table->string("appuser_name");
             $table->string("appuser_pass");
             $table->string("appuser_fname");
@@ -24,7 +24,6 @@ class CreateAppUsersTable extends Migration
             $table->string("appuser_type");
             $table->string("appuser_phone");
             $table->string("appuser_profile_img");
-
         });
     }
 

@@ -15,12 +15,12 @@ class CreateUserSpecializationsTable extends Migration
     {
         Schema::create('user_specializations', function (Blueprint $table) {
 
-            $table->increments("user_specialization_id");
+            $table->bigIncrements("user_specialization_id");
             $table->string("user_specialization_description");
-            
-            $table->integer("appuser_id")->unsigned();
+
+            $table->unsignedBigInteger("appuser_id");
             $table->foreign("appuser_id")->references("appuser_id")->on("app_users");
-            $table->integer("specialization_id")->unsigned();
+            $table->unsignedBigInteger("specialization_id");
             $table->foreign("specialization_id")->references("specialization_id")->on("specializations");
         });
     }

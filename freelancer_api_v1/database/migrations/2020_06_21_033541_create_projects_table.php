@@ -15,16 +15,16 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
 
-            $table->increments("project_id");
+            $table->bigIncrements("project_id");
             $table->string("project_status");
             $table->string("project_review");
             $table->string("project_description");
             $table->double("project_price");
             $table->string("project_delivery_time");
-            
-            $table->integer("appuser_inviter_id")->unsigned();
+
+            $table->unsignedBigInteger("appuser_inviter_id");
             $table->foreign("appuser_inviter_id")->references("appuser_id")->on("app_users");
-            $table->integer("appuser_freelancer_id")->unsigned();
+            $table->unsignedBigInteger("appuser_freelancer_id")->unsigned();
             $table->foreign("appuser_freelancer_id")->references("appuser_id")->on("app_users");
         });
     }

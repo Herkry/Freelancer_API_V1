@@ -24,6 +24,9 @@ class CreateAppUsersTable extends Migration
             $table->string("appuser_type");
             $table->string("appuser_phone");
             $table->string("appuser_profile_img");
+            $table->string("appuser_qualifications");
+            $table->string("appuser_portfolio");
+            $table->string("appuser_rating");
         });
     }
 

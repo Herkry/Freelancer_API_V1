@@ -14,7 +14,7 @@ class CreateSkillSuperCategoriesTable extends Migration
     public function up()
     {
         Schema::create('skill_super_categories', function (Blueprint $table) {
-            $table->id("super_cat_id");
+            $table->id("skillsupercategory_id");
             $table->string("name");
             $table->string("image_url");
             $table->timestamps();

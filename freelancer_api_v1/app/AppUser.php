@@ -11,18 +11,21 @@ class AppUser extends Model
     protected $primaryKey = "appuser_id";
     public $timestamps = false;
 
-    
+
     //has
     //User has one to many rlshp with Project
-    public function projects(){
+    public function projects()
+    {
         return $this->hasMany(Project::class);
     }
     //User has one to many rlshp with UserSpecialization
-    public function userSpecializations(){
+    public function userSpecializations()
+    {
         return $this->hasMany(UserSpecialization::class);
     }
     //User has one to many rlshp with Occupation
-    public function occupations(){
+    public function occupations()
+    {
         return $this->hasMany(Occupation::class);
     }
 
@@ -30,5 +33,4 @@ class AppUser extends Model
     // public function invites(){
     //     return $this->hasMany(Invite::class);
     // }
-
 }

@@ -22,8 +22,8 @@ class CreateSkillSubCategoriesTable extends Migration
             $table->unsignedBigInteger("appuser_id");
             $table->foreign("appuser_id")->references("appuser_id")->on("app_users");
 
-            $table->unsignedBigInteger("super_cat_id");
-            $table->foreign("super_cat_id")->references("super_cat_id")->on("skill_super_categories");
+            $table->unsignedBigInteger("skillsupercategory_id");
+            $table->foreign("skillsupercategory_id")->references("skillsupercategory_id")->on("skill_super_categories");
             $table->timestamps();
         });
     }

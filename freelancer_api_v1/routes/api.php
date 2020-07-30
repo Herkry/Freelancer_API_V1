@@ -92,10 +92,17 @@ Route::get('test', function () {
 });
 /**
  * Gets the general categories
- * *http://localhost:8000/api/
+ * *http://localhost:8000/api/categories
  */
-Route::get('categories', function ($id) {
-    //An array of categories object
-    //Retrieve an objects of array
-
-});
+Route::get('categories', 'SkillSuperCategoryController@index');
+/**
+ * Gets the sub-categories of a specific category
+ * *http://localhost:8000/api/categories/music
+ */
+//ANCHOR 1.0
+Route::get('categories/{category_name}', 'SkillSuperCategoryController@show');
+/**
+ * Gets the artist in a given sub category
+ * *http://localhost:8000/api/categories/music/voiceover
+ */
+Route::get('categories/{category_name}/{sub_category_name}', 'SkillSubCategoryController@showFreelancer');

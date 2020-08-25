@@ -119,16 +119,17 @@ class ProjectController extends Controller
 
         $projects2 = array();
         $projects2["data"] = $projects;
-        $projects2 = $projects;
+        //$projects2 = $projects;
 
         return response()->json( $projects2, 200 );
 
     }
 
-    public function finishProject($id){
-        if(Project::where("id", $id)->exists()){
+    public function finishProject(Request $request, $id){
+        if(Project::where("project_id", $id)->exists()){
             $project = Project::find($id);
-            $project->project_status = is_null($request->project_status) ? $project->project_progress : "pending";
+            //$project->project_status = is_null($request->project_status) ? $project->project_status : "pending2";
+            $project->project_status = $request->project_status;
             $project->save();
             //JSON below
             return response()->json( ["message" => "project status updated successfully"], 200 );
@@ -141,13 +142,14 @@ class ProjectController extends Controller
 
     }
 
-    public function updateProjectProgress($id){
+    public function updateProjectProgress(Request $request, $id){
         $project = Project::find($id);
         
 
         if(Project::where("project_id", $id)->exists()){
             $project = Project::find($id);
-            $project->project_progress = is_null($request->project_progress) ? $project->project_progress : "0";
+            //$project->project_progress = is_null($request->project_progress) ? $project->project_progress : "0";
+            $project->project_progress = $request->project_progress;
             $project->save();
             //JSON below
             return response()->json( ["message" => "project progress updated successfully"], 200 );
@@ -184,7 +186,7 @@ class ProjectController extends Controller
 
         $projects2 = array();
         $projects2["data"] = $projects;
-        $projects2 = $projects;
+        //$projects2 = $projects;
 
         return response()->json( $projects2, 200 );
 
@@ -219,7 +221,7 @@ class ProjectController extends Controller
 
         $projects2 = array();
         $projects2["data"] = $projects;
-        $projects2 = $projects;
+        //$projects2 = $projects;
 
 
         return response()->json( $projects2, 200 );

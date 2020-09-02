@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class AppUser extends Model
 {
     protected $table = "app_users";
-    protected $fillable = ["appuser_name, appuser_pass, appuser_fname, appuser_lname, appuser_location, appuser_type, appuser_phone, appuser_profile_img"];
+    // protected $fillable = ["appuser_name, appuser_pass, appuser_fname, appuser_lname, appuser_email, appuser_location, appuser_type, appuser_phone, appuser_profile_img"];
+    protected $guarded = [];
     protected $primaryKey = "appuser_id";
     public $timestamps = false;
 

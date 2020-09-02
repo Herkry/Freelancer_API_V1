@@ -12,14 +12,42 @@ class AppUserController extends Controller
     //create(one) [POST]
     public function newItem(Request $request)
     {
-        $appUser = new AppUser;
-        //NOTE Must pass First name, Last name, Email, , PhoneNumber, Password
-        $appUser->appuser_name = $request->appuser_name; /*or*/ /*request("appuser_name")*/ /*or*/ /*$request->input("appuser_name")*/
-        $appUser->appuser_pass = $request->appuser_pass;
-        $appUser->save();
+        $appuser_fname = $request->appuser_fname; /*or*/ /*request("appuser_name")*/ /*or*/ /*$request->input("appuser_name")*/
+        $appuser_lname = $request->appuser_lname;
+        $appuser_pass = $request->appuser_pass;
+        $appuser_email = $request->appuser_email;
+        $appuser_location = $request->appuser_location;
+        $appuser_type = $request->appuser_type;
+        $appuser_phone = $request->appuser_phone;
+        $appuser_profile_img = $request->appuser_profile_img;
+        $appuser_qualifications = $request->appuser_qualifications;
+        $appuser_portfolio = $request->appuser_portfolio;
+        $appuser_description = $request->appuser_description;
+        $appuser_rating = $request->appuser_rating;
+
+        $appUser = AppUser::create(
+            [
+                "appuser_fname" => $appuser_fname,
+                "appuser_lname" => $appuser_lname,
+                "appuser_pass" => $appuser_pass,
+                "appuser_email" => $appuser_email,
+                "appuser_location" => $appuser_location,
+                "appuser_type" => $appuser_type,
+                "appuser_phone" => $appuser_phone,
+                "appuser_profile_img" => $appuser_profile_img,
+                "appuser_qualifications" => $appuser_qualifications,
+                "appuser_portfolio" => $appuser_portfolio,
+                "appuser_description" => $appuser_description,
+                "appuser_rating" => $appuser_rating,
+            ]
+        );
+        error_log($appUser);
 
         //JSON below
-        return response()->json(["message" => "new AppUser created"], 201);
+        return response()->json([
+            "message" => "new AppUser created",
+            "appuser" => $appUser
+        ], 201);
     }
     //Route::post(appusers/, "AppUserController@newItem")
 

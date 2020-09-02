@@ -18,12 +18,12 @@ class AppUserController extends Controller
         $appuser_email = $request->appuser_email;
         $appuser_location = $request->appuser_location;
         $appuser_type = $request->appuser_type;
-        $appuser_phone = $request->appuser_phone;
+        $appuser_phone = (int)$request->appuser_phone;
         $appuser_profile_img = $request->appuser_profile_img;
         $appuser_qualifications = $request->appuser_qualifications;
         $appuser_portfolio = $request->appuser_portfolio;
         $appuser_description = $request->appuser_description;
-        $appuser_rating = $request->appuser_rating;
+        $appuser_rating = (int)$request->appuser_rating;
 
         $appUser = AppUser::create(
             [

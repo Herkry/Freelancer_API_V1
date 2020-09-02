@@ -21,7 +21,7 @@ class CreateAppUsersTable extends Migration
             $table->string("appuser_lname");
             $table->string("appuser_email")->nullable();
             $table->string("appuser_location")->nullable();
-            $table->string("appuser_type")->nullable();
+            $table->string("appuser_type")->nullable(); //user or freelancer
             $table->integer("appuser_phone")->nullable();
             $table->string("appuser_profile_img")->nullable();
             $table->string("appuser_qualifications")->nullable();

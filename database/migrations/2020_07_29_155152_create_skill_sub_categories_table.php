@@ -14,13 +14,13 @@ class CreateSkillSubCategoriesTable extends Migration
     public function up()
     {
         Schema::create('skill_sub_categories', function (Blueprint $table) {
-            $table->id();
+            $table->id("id");
             $table->string("name");
-            $table->string("description");
+            // $table->string("description");
             $table->string("image_url");
 
-            $table->unsignedBigInteger("appuser_id");
-            $table->foreign("appuser_id")->references("appuser_id")->on("app_users");
+            // $table->unsignedBigInteger("appuser_id");
+            // $table->foreign("appuser_id")->references("appuser_id")->on("app_users");
 
             $table->unsignedBigInteger("skillsupercategory_id");
             $table->foreign("skillsupercategory_id")->references("skillsupercategory_id")->on("skill_super_categories");

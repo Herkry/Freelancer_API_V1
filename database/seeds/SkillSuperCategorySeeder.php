@@ -12,6 +12,7 @@ class SkillSuperCategorySeeder extends Seeder
      */
     public function run()
     {
-        factory(SkillSuperCategory::class, 20)->create();
+        //Potential bug if adjusted, check the factory file b4 adjusting
+        factory(SkillSuperCategory::class, 4)->create();
     }
 }

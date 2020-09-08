@@ -7,7 +7,11 @@ use App\AppUser;
 use DB;
 use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+use App\Http\Controllers\RequestController;
+use App\Http\Controllers\Controller;
+
+
+class RequestController extends Controller
 {
 
     //----------------------------------------------------------------------------------------------------
@@ -101,6 +105,30 @@ class ProjectController extends Controller
 
     }
     //--------------------request status update--------------------------------------------------------------------
+	
+	
+	
+	
+	//-----------------------This is a test-----------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------------------
+	
+	
+			
+		public function editRequestStatus(Request $request,$id) {
+			
+			$status = $request->input('project_status');
+			
+			//$data=array('first_name'=>$first_name,"last_name"=>$last_name,"city_name"=>$city_name,"email"=>$email);
+			//DB::table('student')->update($data);
+			// DB::table('student')->whereIn('id', $id)->update($request->all());
+			DB::update('update projects set project_status=? where project_id = ?',[$status,$id]);
+		
+
+		}
+	
+	
+	//--------------------------------end of the test-------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------
 
     public function showClientProjectDetails($id){
         //get projects which belong to client

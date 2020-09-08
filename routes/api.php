@@ -107,3 +107,7 @@ Route::get('categories/{category_name}', 'SkillSuperCategoryController@show');
  * *http://localhost:8000/api/categories/music/voiceover
  */
 Route::get('categories/{category_name}/{sub_category_name}', 'SkillSubCategoryController@showFreelancer');
+/**
+ * Post freelancer details into user_skills table
+ */
+Route::post('userskills/', 'UserSkillController@store');

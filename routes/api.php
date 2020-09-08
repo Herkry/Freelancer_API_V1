@@ -53,6 +53,7 @@ Route::put("projects/progress/{id}", "ProjectController@updateProjectProgress");
 Route::get("appusers/client/{id}/projects", "ProjectController@showClientProjectDetails");
 Route::get("appusers/client/{id}/projects", "ProjectController@showClientProjectDetails");
 Route::get("appusers/freelancer/{f_id}/client/{c_id}/project", "ProjectController@showClientSingleProjectDetails");
+Route::put("projects/approve/{id}", "RequestController@updateProjectProgress");
 
 
 
@@ -106,3 +107,7 @@ Route::get('categories/{category_name}', 'SkillSuperCategoryController@show');
  * *http://localhost:8000/api/categories/music/voiceover
  */
 Route::get('categories/{category_name}/{sub_category_name}', 'SkillSubCategoryController@showFreelancer');
+/**
+ * Post freelancer details into user_skills table
+ */
+Route::post('userskills/', 'UserSkillController@store');

@@ -38,8 +38,8 @@ class UserSkillController extends Controller
     public function store(Request $request)
     {
         $entries = [
-            "sub_skill_id" => $request->sub_skill_id,
-            "appuser_id" => $request->appuser_id,
+            "sub_skill_id" => (int)$request->sub_skill_id,
+            "appuser_id" => (int)$request->appuser_id,
             "poster_image_url" => $request->poster_image_url,
             "description" => $request->description,
             "appuser_qualification" => $request->appuser_qualification

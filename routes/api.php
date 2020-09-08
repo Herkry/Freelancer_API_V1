@@ -53,6 +53,7 @@ Route::put("projects/progress/{id}", "ProjectController@updateProjectProgress");
 Route::get("appusers/client/{id}/projects", "ProjectController@showClientProjectDetails");
 Route::get("appusers/client/{id}/projects", "ProjectController@showClientProjectDetails");
 Route::get("appusers/freelancer/{f_id}/client/{c_id}/project", "ProjectController@showClientSingleProjectDetails");
+Route::put("projects/approve/{id}", "RequestController@updateProjectProgress");
 
 
 

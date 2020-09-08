@@ -62,13 +62,34 @@ class ProjectController extends Controller
 
     }
 
-    public function updateProjectProgress($id){
+    // public function updateProjectProgress($id){
+    //     $project = Project::find($id);
+        
+
+    //     if(Project::where("project_id", $id)->exists()){
+    //         $project = Project::find($id);
+    //         $project->project_status = is_null($request->project_status) ? $project->project_status : "0";
+    //         $project->save();
+        
+    //         return response()->json( ["message" => "project progress updated successfully"], 200 );
+    //     }
+    //     else{
+            
+    //         return response()->json( ["message" => "project not found"], 401 );
+    //     }
+
+    // }
+
+    //--------------------request status update--------------------------------------------------------------------
+
+    public function updateProjectProgress(Request $request, $id){
         $project = Project::find($id);
         
 
         if(Project::where("project_id", $id)->exists()){
             $project = Project::find($id);
-            $project->project_progress = is_null($request->project_progress) ? $project->project_progress : "0";
+            //$project->project_progress = is_null($request->project_progress) ? $project->project_progress : "0";
+            $project->project_status = $request->project_status;
             $project->save();
             //JSON below
             return response()->json( ["message" => "project progress updated successfully"], 200 );
@@ -79,6 +100,7 @@ class ProjectController extends Controller
         }
 
     }
+    //--------------------request status update--------------------------------------------------------------------
 
     public function showClientProjectDetails($id){
         //get projects which belong to client

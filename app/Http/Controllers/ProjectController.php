@@ -95,7 +95,10 @@ class ProjectController extends Controller
     //show many [GET]
     public function showProjectDetails($id){
         //get projects which belong to freelancer
-        $projects = DB::table("projects")->where("appuser_freelancer_id", "=", $id)->get()->toArray();
+        $projects = DB::table("projects")->where([["appuser_freelancer_id", "=", $id],
+                                                 ["project_status", "!=", "pendingFreelancerApproval" ]])
+                                         ->orderBy("project_status", "desc")   
+                                         ->get()->toArray();
         
 
         for ($i=0; $i < count($projects); $i++) { 
@@ -109,7 +112,7 @@ class ProjectController extends Controller
             $inviter_details = DB::table("app_users")->where("appuser_id", "=", $appuser_inviter_id)->get()->toArray();
 
 
-            $projects[$i]["project_item_requestor_name"] = $inviter_details[0]->appuser_name;
+            $projects[$i]["project_item_requestor_name"] = $inviter_details[0]->appuser_lname;
             $projects[$i]["project_item_requestor_location"] = $inviter_details[0]->appuser_location;
             $projects[$i]["project_item_requestor_phone"] = $inviter_details[0]->appuser_phone;
 
@@ -164,7 +167,10 @@ class ProjectController extends Controller
 
     public function showClientProjectDetails($id){
         //get projects which belong to client
-        $projects = DB::table("projects")->where("appuser_inviter_id", "=", $id)->get()->toArray();
+        $projects = DB::table("projects")->where([["appuser_inviter_id", "=", $id],
+                                                 ["project_status", "!=", "pendingFreelancerApproval" ]])
+                                         ->orderBy("project_status", "desc")   
+                                         ->get()->toArray();
 
         for ($i=0; $i < count($projects); $i++) { 
 
@@ -177,7 +183,7 @@ class ProjectController extends Controller
             $freelancer_details = DB::table("app_users")->where("appuser_id", "=", $appuser_freelancer_id)->get()->toArray();
 
 
-            $projects[$i]["project_item_freelancer_name"] = $freelancer_details[0]->appuser_name;
+            $projects[$i]["project_item_freelancer_name"] = $freelancer_details[0]->appuser_lname;
             $projects[$i]["project_item_freelancer_location"] = $freelancer_details[0]->appuser_location;
             $projects[$i]["project_item_freelancer_phone"] = $freelancer_details[0]->appuser_phone;
 
@@ -212,7 +218,7 @@ class ProjectController extends Controller
             $freelancer_details = DB::table("app_users")->where("appuser_id", "=", $appuser_freelancer_id)->get()->toArray();
 
 
-            $projects[$i]["project_item_freelancer_name"] = $freelancer_details[0]->appuser_name;
+            $projects[$i]["project_item_freelancer_name"] = $freelancer_details[0]->appuser_lname;
             $projects[$i]["project_item_freelancer_location"] = $freelancer_details[0]->appuser_location;
             $projects[$i]["project_item_freelancer_phone"] = $freelancer_details[0]->appuser_phone;
 

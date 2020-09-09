@@ -111,3 +111,5 @@ Route::get('categories/{category_name}/{sub_category_name}', 'SkillSubCategoryCo
  * Post freelancer details into user_skills table
  */
 Route::post('userskills/', 'UserSkillController@store');
+Route::get('userskills/{appUserID}', 'UserSkillGetterController@getUserSkills');
+

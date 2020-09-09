@@ -28,7 +28,7 @@ class UserSkillGetterController extends Controller
         //get skills of a specific freelancer
         $userSkills = DB::table("user_skills")->where("appuser_id", "=", $appUserID)->get()->toArray();
 
-        for ($i=0; $i < count($$userSkills); $i++) { 
+        for ($i=0; $i < count($userSkills); $i++) { 
 
             //casting to array
             $userSkills[$i] = (array) $userSkills[$i];

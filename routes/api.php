@@ -103,13 +103,15 @@ Route::get('categories', 'SkillSuperCategoryController@index');
 //ANCHOR 1.0
 Route::get('categories/{category_name}', 'SkillSuperCategoryController@show');
 /**
+ * !This route is being deprecated
  * Gets the artist in a given sub category
  * *http://localhost:8000/api/categories/music/voiceover
  */
-Route::get('categories/{category_name}/{sub_category_name}', 'SkillSubCategoryController@showFreelancer');
+// Route::get('categories/{category_name}/{sub_category_name}', 'SkillSubCategoryController@showFreelancer');
+
+Route::get('categories/{category_name}/{sub_cat_id}', 'UserSkillController@show');
 /**
  * Post freelancer details into user_skills table
  */
 Route::post('userskills/', 'UserSkillController@store');
 Route::get('userskills/{appUserID}', 'UserSkillGetterController@getUserSkills');
-

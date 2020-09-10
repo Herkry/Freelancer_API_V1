@@ -55,6 +55,7 @@ Route::get("appusers/client/{id}/projects", "ProjectController@showClientProject
 Route::get("appusers/client/{id}/projects", "ProjectController@showClientProjectDetails");
 Route::get("appusers/freelancer/{f_id}/client/{c_id}/project", "ProjectController@showClientSingleProjectDetails");
 Route::put("projects/approve/{id}", "RequestController@updateProjectProgress");
+Route::post('projects', "ProjectController@store");
 
 Route::get("appusers/freelancer/{id}/requests", "ProjectController@showRequestDetails");
 

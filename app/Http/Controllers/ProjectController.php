@@ -39,8 +39,8 @@ class ProjectController extends Controller
         $project = new Project();
         $project->project_status = $request->project_status;
         $project->project_description = $request->project_description;
-        $project->appuser_inviter_id = $request->appuser_inviter_id;
-        $project->appuser_freelancer_id = $request->appuser_freelancer_id;
+        $project->appuser_inviter_id = (int)$request->appuser_inviter_id;
+        $project->appuser_freelancer_id = (int)$request->appuser_freelancer_id;
         $status = $project->save();
         if ($status) {
             return response()->json([

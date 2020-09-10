@@ -48,7 +48,7 @@ class SkillSubCategoryController extends Controller
     public function show($id)
     {
     }
-
+    //deprecated
     public function showFreelancer($category_name, $sub_category_name)
     {
         $users = SkillSubCategory::where('name', $sub_category_name)->first()->appUser;

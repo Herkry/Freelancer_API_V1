@@ -17,10 +17,10 @@ class CreateProjectsTable extends Migration
 
             $table->bigIncrements("project_id");
             $table->string("project_status");
-            $table->string("project_review");
+            $table->string("project_review")->default("No review made");
             $table->string("project_description");
-            $table->double("project_price");
-            $table->string("project_delivery_time");
+            $table->double("project_price")->nullable();
+            $table->string("project_delivery_time")->nullable();
 
             $table->unsignedBigInteger("appuser_inviter_id");
             $table->foreign("appuser_inviter_id")->references("appuser_id")->on("app_users");

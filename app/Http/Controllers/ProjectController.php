@@ -32,30 +32,37 @@ class ProjectController extends Controller
         $projectArray = [
             "project_status" => $request->project_status,
             "project_description" => $request->project_description,
-            "appuser_inviter_id" => $request->appuser_inviter_id,
-            "appuser_freelancer_id" => $request->appuser_freelancer_id
+            "appuser_inviter_id" => (int)$request->appuser_inviter_id,
+            "appuser_freelancer_id" => (int) $request->appuser_freelancer_id
         ];
-        $project = Project::create($projectArray);
-        //Method 2
-        // $project = DB::insert('insert into projects ( project_status,
-        //  project_description,
-        //  appuser_inviter_id, 
-        //  appuser_freelancer_id ) values (?, ?, ?, ?)', $projectArray);
+        // $project = Project::create($projectArray);
+        $project = new Project();
+        $project->project_status = $request->project_status;
+        $project->project_description = $request->project_description;
+        $project->appuser_inviter_id = $request->appuser_inviter_id;
+        $project->appuser_freelancer_id = $request->appuser_freelancer_id;
+        $status = $project->save();
+        if ($status) {
+            return response()->json([
+                "message" => "new Project created",
+                "project" => $project
+            ], 201);
+        }
+
         return response()->json([
-            "message" => "new Project created",
-            "project" => $project
+            "message" => "Fail",
         ], 201);
     }
 
-    public function newItem(Request $request)
-    {
-        $project = new Project;
-        $project->attr1 = /*request("attr1")*/ /*or*/ /*$request->input("attr1")*/ /*or*/ $request->attr1;
-        $project->save();
+    // public function newItem(Request $request)
+    // {
+    //     $project = new Project;
+    //     $project->attr1 = /*request("attr1")*/ /*or*/ /*$request->input("attr1")*/ /*or*/ $request->attr1;
+    //     $project->save();
 
-        //JSON below
-        return response()->json(["message" => "new project created"], 201);
-    }
+    //     //JSON below
+    //     return response()->json(["message" => "new project created"], 201);
+    // }
     //Route::post(projects/, "ProjectController@newItem")
 
     // //show (one) [GET]

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\AppUser;
+use App\Http\Resources\AppUser as ResourcesAppUser;
 use App\Http\Resources\UserSkill as ResourcesUserSkill;
 use App\UserSkill;
 use Illuminate\Http\Request;
@@ -57,10 +59,21 @@ class UserSkillController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($category_name)
+    public function show($cat_name, $sub_cat_id)
     {
-        //
-
+        //appUser is the method in the model
+        // error_log($sub_cat_id);
+        $usersArray = [];
+        $userskill = UserSkill::where("sub_skill_id", (int)$sub_cat_id)->get();
+        foreach ($userskill as $key => $value) {
+            if ($value->sub_skill_id == $sub_cat_id) {
+                //get userid
+                $user_id = $value->appuser_id;
+                $user = AppUser::where("appuser_id", $user_id)->get();
+                array_push($usersArray, $user[0]);
+            }
+        }
+        return ResourcesAppUser::collection($usersArray);
     }
 
     /**

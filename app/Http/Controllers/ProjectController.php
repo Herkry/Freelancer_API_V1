@@ -236,4 +236,40 @@ class ProjectController extends Controller
     }
 
 
+    public function showRequestDetails($id){
+        //get projects which belong to freelancer
+        $projects = DB::table("projects")->where([["appuser_freelancer_id", "=", $id],
+                                                 ["project_status", "=", "pendingFreelancerApproval" ]])
+                                         ->orderBy("project_status", "desc")   
+                                         ->get()->toArray();
+        
+
+        for ($i=0; $i < count($projects); $i++) { 
+
+            //casting to array
+            $projects[$i] = (array) $projects[$i];
+
+            //getting details of the inviter
+            $appuser_inviter_id = $projects[$i]["appuser_inviter_id"];
+
+            $inviter_details = DB::table("app_users")->where("appuser_id", "=", $appuser_inviter_id)->get()->toArray();
+
+
+            $projects[$i]["project_item_requestor_name"] = $inviter_details[0]->appuser_lname;
+            $projects[$i]["project_item_requestor_location"] = $inviter_details[0]->appuser_location;
+            $projects[$i]["project_item_requestor_phone"] = $inviter_details[0]->appuser_phone;
+
+            //casting back to object
+            $projects[$i] = (object) $projects[$i];
+        }
+
+        $projects2 = array();
+        $projects2["data"] = $projects;
+        //$projects2 = $projects;
+
+        //return response()->json( ["123"], 200 );
+        return response()->json( $projects2, 200 );
+
+    }
+
 }

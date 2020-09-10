@@ -27,6 +27,7 @@ Route::put("appusers/{id}", "AppUserController@updateItem");
 Route::get("appusers/", "AppUserController@showAllItems");
 
 // New routes below
+Route::get("appusers/login/{appUser_email}", "AppUserController@showLoginDetails");
 
 
 //Occupation

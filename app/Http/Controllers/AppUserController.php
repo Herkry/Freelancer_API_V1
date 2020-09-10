@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Project;
 use App\AppUser;
+use DB;
 use Illuminate\Http\Request;
 
 class AppUserController extends Controller
@@ -119,5 +121,18 @@ class AppUserController extends Controller
     //End
 
     //Functions below
+
+    public function showLoginDetails($appUser_email){
+        //get projects which belong to freelancer
+        $appUserDetails = DB::table("app_users")->where("appuser_email", $appUser_email)
+                                               ->get()->toArray();
+                
+        $appUserDetails2 = array();
+        $appUserDetails2["data"] = $appUserDetails;
+
+        //return response()->json( ["123"], 200 );
+        return response()->json( $appUserDetails2, 200 );
+
+    }
 
 }
